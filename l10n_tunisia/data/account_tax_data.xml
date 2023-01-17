@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- account chart  -->
-    <record id="l10n_tn_chart_template" model="account.chart.template">
-        <field name="property_account_receivable_id" ref="account4111"/>
-        <field name="property_account_payable_id" ref="account4011"/>
-        <field name="property_account_income_categ_id" ref="account707"/>
-        <field name="property_account_expense_categ_id" ref="account607"/>
-        <field name="income_currency_exchange_account_id" ref="account756"/>
-        <field name="expense_currency_exchange_account_id" ref="account655"/>
-        <field name="default_pos_receivable_account_id" ref="account5411" />
-    </record>
 
     <!-- Account Tax Template -->
     <record model="account.tax.template" id="tva_vt19">
@@ -185,7 +175,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'tax',
-                    'account_id': ref('account4371'),
+                    'account_id': ref('account437100'),
                 }),
             ]"/>
             <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
@@ -196,7 +186,39 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'tax',
-                    'account_id': ref('account4371'),
+                    'account_id': ref('account437100'),
+                }),
+            ]"/>
+        </record>
+
+     <record model="account.tax.template" id="tva_sale_fodec">
+            <field name="name">FODEC</field>
+            <field name="description"></field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">1</field>
+            <field name="amount_type">percent</field>
+            <field name="chart_template_id" ref="l10n_tn_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_fodec"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('account436780'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('account436780'),
                 }),
             ]"/>
         </record>
@@ -375,7 +397,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'tax',
-                    'account_id': ref('account6654'),
+                    'account_id': ref('account665400'),
                 }),
             ]"/>
             <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
@@ -386,10 +408,41 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'tax',
-                    'account_id': ref('account6654'),
+                    'account_id': ref('account665400'),
                 }),
             ]"/>
         </record>
 
+         <record model="account.tax.template" id="tva_ac_fodec">
+            <field name="name">FODEC</field>
+            <field name="description"></field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">1</field>
+            <field name="amount_type">percent</field>
+            <field name="chart_template_id" ref="l10n_tn_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_fodec"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('account665200'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('account665200'),
+                }),
+            ]"/>
+        </record>
 
 </odoo>
